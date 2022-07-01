@@ -1,0 +1,27 @@
+@model DesafioMVC.Models.Receita
+@{
+    Layout = "_Layout";
+}
+<h2>Atualizar Receita</h2>
+<hr>
+<form class="form-horizontal" asp-controller="Receitas" asp-action="Atualizar" method="post">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Insira o nome da receita"><br>
+    <span asp-validation-for="Nome"></span><br>
+
+    <label asp-for="UrlImagem">Imagem da receita (URL)</label>
+    <input type="text" asp-for="UrlImagem" class="form-control" placeholder="http://urldaimagem.com.br"><br>
+    <span asp-validation-for="UrlImagem"></span><br>
+
+    <label asp-for="TempoDePreparo">Tempo de Preparo <strong>em Minutos</strong></label>
+    <input type="text" asp-for="TempoDePreparo" class="form-control" placeholder="Ex.: 30"><br>
+    <span asp-validation-for="TempoDePreparo"></span><br>
+    
+    <label asp-for="ModoDePreparo">Modo de Preparo</label>
+    <input type="text" asp-for="ModoDePreparo" class="form-control" placeholder="Insira o passo a passo da receita separando as etapas com ponto e vírgula ( ; )"><br>
+    <span asp-validation-for="ModoDePreparo"></span><br>
+    
+    <button class="btn btn-primary">Atualizar</button>
+</form>

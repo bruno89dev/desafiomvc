@@ -1,0 +1,45 @@
+@model IEnumerable<DesafioMVC.Models.Receita>
+@{
+    ViewData["Title"] = "Lista de Receitas";
+    Layout = "_Layout";
+}
+<h2>Lista de Receitas</h2>
+<hr>
+<a asp-action="Adicionar" asp-controller="Receitas" class="btn btn-primary">Nova Receita</a>
+<hr>
+
+<script>
+    $(document).ready(function (){
+        $('#receitas').DataTable();
+    });
+</script>
+
+<table id="receitas" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th id="tempo-preparo">Tempo de Preparo</th>
+            <th>Modo de Preparo</th>
+            <th id="acoes">Ações (Admin)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var receita in Model){
+            <tr>
+                <td>@receita.Id</td>
+                <td><img src="@receita.UrlImagem" class="imagem-receita"></td>
+                <td>@receita.Nome</td>
+                <td>@receita.TempoDePreparo minutos</td>
+                <td>@receita.ModoDePreparo</td>
+                <td><a class="btn btn-primary" href="/Receitas/Editar/@receita.Id">Editar</a> 
+
+                <form asp-action="Deletar" asp-controller="Receitas" style="display: inline">
+                    <input type="hidden" name="id" id="id" value="@receita.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                </form></td>
+            </tr>
+        }
+    </tbody>
+</table>

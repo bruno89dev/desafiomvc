@@ -1,0 +1,15 @@
+@model DesafioMVC.Models.Medida
+@{
+    Layout = "_Layout";
+}
+<h2>Atualizar Medida</h2>
+<hr>
+<form class="form-horizontal" asp-controller="Medidas" asp-action="Atualizar" method="post">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Insira a medida (ex.: xícara, colher, etc)"><br>
+    <span asp-validation-for="Nome"></span><br>
+    
+    <button class="btn btn-primary">Atualizar</button>
+</form>
